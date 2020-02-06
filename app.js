@@ -11,4 +11,20 @@ function cameraStarttaa(){
     .then(function(kuvavirta){kamerakuva.srcObject = kuvavirta;})
     .catch(function(error){console.log("huppista")})
     }
+
+    laukaisin.onclick = function(){
+
+        kameracanvas.width= kamerakuva.videoWidth;
+        kameracanvas.height= kamerakuva.videoHeight;
+        kameracanvas.getContext("2d").drawImage(kamerakuva, 0,0);
+        kuvasijainti.srcObject = kameracanvas.toDataURL("image/png");
+        kameracanvas.hidden = true;
+
+
+        kuvasijainti.style.width = "100px";
+        kuvasijainti.style.height = "100px";
+        console.log(kuvasijainti.style.width);
+
+    }
+
 window.addEventListener("load", cameraStarttaa)
